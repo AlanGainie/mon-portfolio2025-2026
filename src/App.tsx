@@ -164,7 +164,6 @@ function App() {
                   onClick={() => setShowTerminal(false)}
                   className="absolute top-2 right-3 text-yellow-300 text-2xl font-bold hover:text-red-500"
                 >
-                  ×
                 </button>
                 <TerminalLinux />
               </div>

@@ -26,6 +26,19 @@ J'ai eut la chance dans se projet de le réaliser sans contraintes extérieur et
 - L’aspect visuel du site repose sur `Tailwind CSS`, un framework CSS utilitaire.
 - Les fonctionnalités ont été développées en `JSX`, la syntaxe utilisée avec React, pour bénéficier d’un code structuré, clair et robuste.
 
+## Moduls
+
+Afin de réaliser mon projet dans les meuilleurs conditions et ceux dans le but de ne pas avoir de fichier trop volumineux j'ai utiliser l'outils `git-lfs` qui me sert alors à 
+
+<> Commande d'installation fedora Linux : 
+
+```BASH
+sudo dnf install git-lfs
+git lfs install
+```
+git lfs track "*.mp4"
+git add .gitattributes
+
 ## Exemples de code
 A suivre..
 
