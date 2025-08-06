@@ -1,5 +1,5 @@
 import React from 'react';
-import Carrousel from '../Carrousel.tsx';
+import Carrousel from '../composants/Carrousel';
 
 function Project1() {
     const slides = [

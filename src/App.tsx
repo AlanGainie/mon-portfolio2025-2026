@@ -1,40 +1,40 @@
 import React from 'react';
-import BarreMenue from './BarreMenue.tsx';
-import './App.css';
+import BarreMenue from './template/organismes/BarreMenue.tsx';
+import './styles/App.css';
 import { useState } from 'react';
 
 // -- Composants--------
 // Pages
-import TerminalLinux from './TerminalLinux';
-import MonCV from './MonCV.tsx';
-import MesEtudes from './MesEtudes.tsx';
-import MesCompetences from './MesCompetences.tsx';
-import ErrorGest from './errorGest.tsx';
-import HomePage from './HomePage.tsx';
-import Projets from './Projets.tsx';
-import Contacts from './Contacts.tsx';
-import Epitech from './pages/Epitech.tsx';
-import AproposDeMoi from './pages/AproposDeMoi.tsx';
-import CurriculumVitae from './pages/CurriculumVitae.tsx';
-import ESMA from './pages/ESMA.tsx';
-import ESUP from './pages/ESUP.tsx';
-import Gmail from './pages/Gmail.tsx';
-import Linkedin from './pages/Linkedin.tsx';
-import Introduction from './pages/Introduction.tsx';
-import NodeJs from './pages/NodeJs.tsx';
-import JavaScript from './pages/JavaScript.tsx';
-import Lycee from './pages/Lycee.tsx';
-import Softskills from './pages/Softskills.tsx';
-import Telephone from './pages/Telephone.tsx';
-import Sommaire from './pages/Sommaire.tsx';
-import ReactLg from './pages/ReactLg.tsx';
-import Others from './pages/Others.tsx';
-import Project1 from './pages/Project1.tsx';
-import Project2 from './pages/Project2.tsx';
+import TerminalLinux from './template/organismes/TerminalLinux.tsx';
+import MonCV from './template/pages/MonCV.tsx';
+import MesEtudes from './template/pages/MesEtudes.tsx';
+import MesCompetences from './template/pages/MesCompetences.tsx';
+import ErrorGest from './template/pages/errorGest.tsx';
+import HomePage from './template/pages/HomePage.tsx';
+import Projets from './template/pages/Projets.tsx';
+import Contacts from './template/pages/Contacts.tsx';
+import Epitech from './template/pages/Epitech.tsx';
+import AproposDeMoi from './template/pages/AproposDeMoi.tsx';
+import CurriculumVitae from './template/pages/CurriculumVitae.tsx';
+import ESMA from './template/pages/ESMA.tsx';
+import ESUP from './template/pages/ESUP.tsx';
+import Gmail from './template/pages/Gmail.tsx';
+import Linkedin from './template/pages/Linkedin.tsx';
+import Introduction from './template/pages/Introduction.tsx';
+import NodeJs from './template/pages/NodeJs.tsx';
+import JavaScript from './template/pages/JavaScript.tsx';
+import Lycee from './template/pages/Lycee.tsx';
+import Softskills from './template/pages/Softskills.tsx';
+import Telephone from './template/pages/Telephone.tsx';
+import Sommaire from './template/pages/Sommaire.tsx';
+import ReactLg from './template/pages/ReactLg.tsx';
+import Others from './template/pages/Others.tsx';
+import Project1 from './template/pages/Project1.tsx';
+import Project2 from './template/pages/Project2.tsx';
 
 // Utilitaire
-import ScrollingBarre from './ScrollingBarre.tsx';
-import Carrousel from './Carrousel.tsx';
+import ScrollingBarre from './template/composants/ScrollingBarre.tsx';
+import Carrousel from './template/composants/Carrousel.tsx';
 
 //--------
 

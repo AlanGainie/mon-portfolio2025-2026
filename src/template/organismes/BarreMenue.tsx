@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from './Button.tsx';
+import Button from '../composants/Button';
 
 // Onglets passés en props (dynamique)
 function barreDeDefilement({ className, setTab, tabs, }: { className?: string; setTab: (tab: number) => void; tabs: string[]; }) {
