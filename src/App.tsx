@@ -5,6 +5,8 @@ import './styles/tw.ts';
 import { useState } from 'react';
 
 // -- Composants--------
+import Button from './template/composants/Button.tsx';
+
 // Pages
 import TerminalLinux from './template/organismes/TerminalLinux.tsx';
 import MonCV from './template/pages/MonCV.tsx';
@@ -36,7 +38,8 @@ import Project2 from './template/pages/Project2.tsx';
 // Utilitaire
 import ScrollingBarre from './template/composants/ScrollingBarre.tsx';
 import Carrousel from './template/composants/Carrousel.tsx';
-import { BARREMENUE, DIRECTIONS, FLEXCOL, FLEXROW, TERMINALBUTTON, TERMINALBUTTONQUIT } from './styles/tw.ts';
+import { BARREMENUE, DIRECTIONS, DOWNPAGESCROLLDOWN, FLEXCOL, FLEXROW, GLOBALMENUE, PAGESCROLLDOWN, PARAMETERMENUE, PASTEL, ROOTMENUE, SECONDARYMENUE, TERMINALBUTTON, TERMINALBUTTONQUIT, THEMES, TOPPAGESCROLLDOWN } from './styles/tw.ts';
+import Theme from './template/organismes/Themes.tsx';
 
 //--------
 
@@ -139,53 +142,54 @@ function App() {
       </head>
       {/* Définir une taille de fenêtre de + de 2000px pour pouvoir scroll down ou up */}
       <div className="w-full min-h-screen bg-[url('./background.jpg')] bg-fixed h-[10000px]">
-        {/* Premier menu à gauche */}
-        <BarreMenue
-          className={`${FLEXCOL} ${BARREMENUE} justify-start ${DIRECTIONS("top", 8)} ${DIRECTIONS("left", 1)} w-70 rounded-lg`}
-          setTab={setTab1}
-          tabs={tabs_menue1}
-        />
-        {/* Second menu centré en haut */}
-        <BarreMenue
-          className={`${FLEXROW} ${BARREMENUE} justify-center ${DIRECTIONS("top", 2)} ${DIRECTIONS("left", 50)} -translate-x-1/2 h-10 w-[80%] rounded-full`}
-          setTab={handleTab2Click}
-          tabs={['Home page', 'À propos de moi/CV', 'Mes Competences', 'Projets', 'Mes Etudes', 'Contact']}
-        />
-        {/* Terminal */}
-        <div className="p-8">
-          <button
-            onClick={() => setShowTerminal(true)}
-            className={`${TERMINALBUTTON}`}
-          >
-            Ouvrir le terminal
-          </button>
-          {showTerminal && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-              <div className="relative bg-black text-white rounded-2xl p-6 w-[680px] max-w-full shadow-2xl border border-yellow-400">
-                <button
-                  onClick={() => setShowTerminal(false)}
-                  className={`${TERMINALBUTTONQUIT}`}
-                >
-                </button>
-                <TerminalLinux />
-              </div>
+        <div className={`${GLOBALMENUE}`}>
+          {/* Premier menu à gauche */}
+          <BarreMenue
+            className={`${SECONDARYMENUE}`}
+            setTab={setTab1}
+            tabs={tabs_menue1}
+          />
+          {/* Second menu centré en haut */}
+          <BarreMenue
+            className={`${ROOTMENUE}`}
+            setTab={handleTab2Click}
+            tabs={['Home page', 'À propos de moi/CV', 'Mes Competences', 'Projets', 'Mes Etudes', 'Contact']}
+          />
+          <div className={`${PARAMETERMENUE}`}>
+            {/* <Theme nbr="2" colors={"bg-black", "bg-white"}/> */}
+            {/* Terminal */}
+            <div>
+              <Button
+                InternClassName={`${TERMINALBUTTON}`}
+                name={`Ouvrir le terminal`}
+                onClick={() => setShowTerminal(true)} />
+              {showTerminal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+                  <div className="relative bg-black text-white rounded-2xl p-6 w-[680px] max-w-full shadow-2xl border border-yellow-400">
+                    <button
+                      onClick={() => setShowTerminal(false)}
+                      className={`${TERMINALBUTTONQUIT}`}
+                      >
+                    </button>
+                    <TerminalLinux />
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+            <ScrollingBarre />
+          </div>
         </div>
-        <div className="flex justify-center w-full mt-32">
-          <div className={`${FLEXCOL} w-[70%] rounded-2xl border-yellow-400 border-4 bg-white/80 backdrop-blur-md shadow-2xl gap-6`}>
+        <div className={`${PAGESCROLLDOWN}`}>
             {/* Affiche le résultat des tab de la première barre de menu */}
-            <div className={`${FLEXCOL} bg-gray-200 rounded-lg border-pink-50 border-7`}>
+            <div className={`${TOPPAGESCROLLDOWN}`}>
               {display(tab_menue2, displaysInf)}
             </div>
             <hr />
             {/* Affiche les résultat des tab de la seconde barre de menu */}
-            <div className={`${FLEXCOL} rounded-lg border-pink-50 border-7`}>
+            <div className={`${DOWNPAGESCROLLDOWN}`}>
               {displayTab(tab_menue1, displaysInf)}
             </div>
           </div>
-        </div>
-        <ScrollingBarre />
       </div >
     </>
   );

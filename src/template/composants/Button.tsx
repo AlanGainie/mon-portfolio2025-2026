@@ -1,14 +1,12 @@
-function Button({ name, onClick, focus, InternClassName }: { name: string, onClick: any, focus: boolean, InternClassName?: any }) {
-  const colorButton = focus ? 'bg-green-500' : 'bg-red-500 hover:bg-gray-500 opacity-70 border-red-500'
+import { BUTTONCOLORS } from "../../styles/tw"
 
-  InternClassName = (InternClassName != null) ? `${InternClassName} hover:bg-gray-500` : `${colorButton} rounded-lg `;
+function Button({ name, onClick, InternClassName, clicked, disabled }: { name: string, onClick: any, InternClassName?: any,  clicked?: boolean, disabled?: boolean }) {
+  const BUTTONBG = 'bg-red-500';
 
   return (
     <>
-      <div onClick={onClick} className={InternClassName}>
-        <p>
-          {name}
-        </p>
+      <div onClick={onClick} className={InternClassName ? InternClassName : `${BUTTONBG} ${BUTTONCOLORS(clicked, disabled)} rounded-lg`}>
+        {name}
       </div>
     </>
   )
