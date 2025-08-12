@@ -40,7 +40,6 @@ import ScrollingBarre from './template/composants/ScrollingBarre.tsx';
 import Carrousel from './template/composants/Carrousel.tsx';
 import { BARREMENUE, DIRECTIONS, DOWNPAGESCROLLDOWN, FLEXCOL, FLEXROW, GLOBALMENUE, PAGESCROLLDOWN, PARAMETERMENUE, PASTEL, ROOTMENUE, SECONDARYMENUE, TERMINALBUTTON, TERMINALBUTTONQUIT, THEMES, TOPPAGESCROLLDOWN } from './styles/tw.ts';
 import Theme from './template/organismes/Themes.tsx';
-
 //--------
 
 
@@ -100,7 +99,7 @@ function App() {
   const [tab_menue1, setTab1] = useState(0);
   const [tab_menue2, setTab2] = useState(0);
   const [tabs_menue1, setTabs1] = useState(['...']);
-  const [tabs_menue2, setTabs2] = useState(['...']);
+  const [icons_menue1, setIcons1] = useState(['more']);
   const [displayFirstMenuIndex, setDisplayFirstMenuIndex] = useState<number>(0);
   const [displaySecondMenuIndex, setDisplaySecondMenuIndex] = useState<number>(0);
 
@@ -112,24 +111,31 @@ function App() {
     switch (tabIndex) {
       case 0:
         setTabs1(["Introduction", "Sommaire"]);
+        setIcons1(["", ""]);
         break;
       case 1:
         setTabs1(["A propos de moi", "Curriculum Vitae"]);
+        setIcons1(["personal", "cv"]);
         break;
       case 2:
         setTabs1(["JavaScript", "React", "Node.js"]);
+        setIcons1(["js", "react", "node"]);
         break;
       case 3:
         setTabs1(["Projet1", "Projet2"]);
+        setIcons1(["revision", "jdr"]);
         break;
       case 4:
         setTabs1(["Lycée", "Epitech", "ESMA", "ESUP"]);
+        setIcons1(["", "", "", ""]);
         break;
       case 5:
         setTabs1(["Linkedin", "Gmail", "Téléphone", "..."]);
+        setIcons1(["linkedin", "at", "contact", "more"]);
         break;
       default:
         setTabs1(["Home page", "Softskills"]);
+        setIcons1(["home", ""]);
         break;
     }
   };
@@ -148,29 +154,28 @@ function App() {
             className={`${SECONDARYMENUE}`}
             setTab={setTab1}
             tabs={tabs_menue1}
-          />
+            icons={icons_menue1} />
           {/* Second menu centré en haut */}
           <BarreMenue
             className={`${ROOTMENUE}`}
             setTab={handleTab2Click}
             tabs={['Home page', 'À propos de moi/CV', 'Mes Competences', 'Projets', 'Mes Etudes', 'Contact']}
-          />
+            icons={["home", "cv", "competence", "projet", "etudes", "contact"]} />
           <div className={`${PARAMETERMENUE}`}>
-            {/* <Theme nbr="2" colors={"bg-black", "bg-white"}/> */}
             {/* Terminal */}
             <div>
               <Button
                 InternClassName={`${TERMINALBUTTON}`}
                 name={`Ouvrir le terminal`}
-                onClick={() => setShowTerminal(true)} />
+                onClick={() => setShowTerminal(true)}
+                icon="terminal"/>
               {showTerminal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
                   <div className="relative bg-black text-white rounded-2xl p-6 w-[680px] max-w-full shadow-2xl border border-yellow-400">
-                    <button
+                    <Button
+                      InternClassName={`${TERMINALBUTTONQUIT}`}
                       onClick={() => setShowTerminal(false)}
-                      className={`${TERMINALBUTTONQUIT}`}
-                      >
-                    </button>
+                      icon="cross"/>
                     <TerminalLinux />
                   </div>
                 </div>

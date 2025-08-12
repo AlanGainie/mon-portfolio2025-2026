@@ -44,10 +44,12 @@ export const DIRECTIONS = (position: "top" | "left" | "right" | "bottom" | "cent
 //___________________________
 
     // Structure de base menue
-    export const COLORSBARREMENUE = `bg-gray-300 border-yellow-500 border-7`;
+    // export const COLORSBARREMENUEV01 = `bg-gray-300 border-yellow-500 border-7`;
+    export const COLORSBARREMENUE = ``;
     export const BARREMENUE = `gap-4 rounded-xl ${COLORSBARREMENUE}`;
     
-    export const GLOBALMENUE = `${FLEXROW} gap-1 p-1 ${COLORSBARREMENUE}`;
+    // bg-black/80
+    export const GLOBALMENUE = `${FLEXROW} gap-1 p-1 bg-[url('/home/againie/Desktop/AppPortefolioReact/Mon-portfolio2025-2026/src/assets/picture/background.svg')] rounded-xl`;
         // Root Menue
         export const ROOTMENUE = `${FLEXROW} ${BARREMENUE} justify-center w-[60%] h-12 p-1`;
         // Secondary Menue
@@ -82,11 +84,11 @@ export const DIRECTIONS = (position: "top" | "left" | "right" | "bottom" | "cent
     // Bouttons terminal
     export const TERMINALBUTTONHOVER = "hover:bg-white"
     export const TERMINALBUTTONCOLORS = "bg-neutral-800 text-green-500 border-green-500 border-7 font-semibold transition-colors duration-300"
-    export const TERMINALBUTTON = `px-4 py-2 rounded-lg ${TERMINALBUTTONCOLORS} ${TERMINALBUTTONHOVER}`
+    export const TERMINALBUTTON = `gap-4 px-4 py-2 rounded-lg ${TERMINALBUTTONCOLORS} ${TERMINALBUTTONHOVER}`
 
     export const TERMINALBUTTONHOVERQUIT = "hover:text-red-500"
     export const TERMINALBUTTONCOLORSQUIT = "bg-gray-300 text-yellow-300 text-2xl font-bold transition-colors duration-300"
-    export const TERMINALBUTTONQUIT = `${DIRECTIONS("top", 2)} ${DIRECTIONS("left")} ${TERMINALBUTTONCOLORSQUIT} ${TERMINALBUTTONHOVERQUIT}`
+    export const TERMINALBUTTONQUIT = `${FLEXROW} justify-center w-[6%] rounded-xl ${TERMINALBUTTONCOLORSQUIT} ${TERMINALBUTTONHOVERQUIT}`
 
 
 // Animation

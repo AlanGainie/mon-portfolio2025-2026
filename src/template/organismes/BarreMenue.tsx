@@ -2,14 +2,16 @@ import { useState } from 'react';
 import Button from '../composants/Button';
 
 // Onglets passés en props (dynamique)
-function barreDeDefilement({ className, setTab, tabs, }: { className?: string; setTab: (tab: number) => void; tabs: string[]; }) {
+export default function barreDeDefilement({ className, setTab, tabs, icons}: { className?: string; setTab: (tab: number) => void; tabs: string[]; icons?: (string[]);}) {
   return (
     <div className={className}>
       {tabs.map((name, index) => (
-        <Button key={index} name={name} onClick={() => setTab(index)} />
+        <Button
+          key={index}
+          name={name}
+          icon={icons?.[index]}
+          onClick={() => setTab(index)} />
       ))}
     </div>
   );
 }
-
-export default barreDeDefilement;
