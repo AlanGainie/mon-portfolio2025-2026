@@ -38,7 +38,7 @@ import Project2 from './template/pages/Project2.tsx';
 // Utilitaire
 import ScrollingBarre from './template/composants/ScrollingBarre.tsx';
 import Carrousel from './template/composants/Carrousel.tsx';
-import { BARREMENUE, DIRECTIONS, DOWNPAGESCROLLDOWN, FLEXCOL, FLEXROW, GLOBALMENUE, PAGESCROLLDOWN, PARAMETERMENUE, PASTEL, ROOTMENUE, SECONDARYMENUE, TERMINALBUTTON, TERMINALBUTTONQUIT, THEMES, TOPPAGESCROLLDOWN } from './styles/tw.ts';
+import { BARREMENUE, DIRECTIONS, DOWNPAGESCROLLDOWN, FLEXCOL, FLEXROW, GLOBALMENUE, PAGESCROLLDOWN, PAGESGLOBAL, PARAMETERMENUE, PASTEL, ROOTMENUE, SECONDARYMENUE, TERMINALBUTTON, TERMINALBUTTONQUIT, THEMES, TOPPAGESCROLLDOWN } from './styles/tw.ts';
 import Theme from './template/organismes/Themes.tsx';
 //--------
 
@@ -147,7 +147,7 @@ function App() {
         <link rel="shortcut icon" href="../icone_portfolio.png" type="image/x-icon" />
       </head>
       {/* Définir une taille de fenêtre de + de 2000px pour pouvoir scroll down ou up */}
-      <div className="w-full min-h-screen bg-[url('./background.jpg')] bg-fixed h-[10000px]">
+      <div className={`${PAGESGLOBAL}`}>
         <div className={`${GLOBALMENUE}`}>
           {/* Premier menu à gauche */}
           <BarreMenue

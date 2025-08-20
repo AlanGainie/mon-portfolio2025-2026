@@ -10,7 +10,8 @@ export default function barreDeDefilement({ className, setTab, tabs, icons}: { c
           key={index}
           name={name}
           icon={icons?.[index]}
-          onClick={() => setTab(index)} />
+          onClick={() => setTab(index)}
+          uncolor={true}/>
       ))}
     </div>
   );

@@ -108,13 +108,19 @@ function SetIcon(icon: string) {
   }
 }
 
-function Button({ name, onClick, icon, InternClassName, clicked, disabled }: { name?: string, onClick: any, icon?: string, InternClassName?: any,  clicked?: boolean, disabled?: boolean }) {
-  const BUTTONGLOBAL = `${FLEXROW} bg-red-500`;
+function Button({ name, onClick, icon, InternClassName, clicked, disabled, uncolor }: { name?: string, onClick: any, icon?: string, InternClassName?: any,  clicked?: boolean, disabled?: boolean, uncolor?: boolean }) {
+  let COLORS = ``;
+  let ICONCOLORS = ``;
+  if (!uncolor)
+    COLORS = `bg-red-500 ${BUTTONCOLORS(clicked, disabled)}`;
+  else
+    COLORS = `text-white`;
+    ICONCOLORS = `text-white`;
 
   return (
     <>
-      <div onClick={onClick} className={InternClassName ? `${FLEXROW} ${InternClassName}` : `${BUTTONGLOBAL} ${BUTTONCOLORS(clicked, disabled)} rounded-lg`}>
-        {icon && <img src={SetIcon(icon)} alt={icon} className="w-6 h-6"/>}
+      <div onClick={onClick} className={InternClassName ? `${FLEXROW} ${InternClassName}` : `${FLEXROW} ${COLORS} rounded-lg`}>
+        {icon && <img src={SetIcon(icon)} alt={icon} className={`w-6 h-6 ${ICONCOLORS}`}/>}
         {name}
       </div>
     </>
