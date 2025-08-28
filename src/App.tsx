@@ -36,10 +36,12 @@ import Project1 from './template/pages/Project1.tsx';
 import Project2 from './template/pages/Project2.tsx';
 
 // Utilitaire
-import ScrollingBarre from './template/composants/ScrollingBarre.tsx';
+import ScrollingBarre from './template/composants/Croll.tsx';
 import Carrousel from './template/composants/Carrousel.tsx';
-import { BARREMENUE, DIRECTIONS, DOWNPAGESCROLLDOWN, FLEXCOL, FLEXROW, GLOBALMENUE, PAGESCROLLDOWN, PAGESGLOBAL, PARAMETERMENUE, PASTEL, ROOTMENUE, SECONDARYMENUE, TERMINALBUTTON, TERMINALBUTTONQUIT, THEMES, TOPPAGESCROLLDOWN } from './styles/tw.ts';
+import { BARREMENUE, BUTTONTERMINAL, BUTTONTERMINALQUIT, DIRECTIONS, DOWNPAGESCROLLDOWN, FLEXCOL, FLEXROW, FOOTER, GLOBALMENUE, PAGESCROLLDOWN, PAGESGLOBAL, PARAMETERMENUE, PASTEL, ROOTMENUE, SECONDARYMENUE, THEMES, TOPPAGESCROLLDOWN } from './styles/tw.ts';
 import Theme from './template/organismes/Themes.tsx';
+import LanguageC from './template/pages/C.tsx';
+import Croll from './template/composants/Croll.tsx';
 //--------
 
 
@@ -48,7 +50,7 @@ const displaysInf: { displayFirstMenuIndex: number; displaySecondMenuIndex: numb
 ];
 
 function display(tab: number, displaysInf: any) {
-  displaysInf.diplayFirstMenuIndex = tab
+  displaysInf.displayFirstMenuIndex = tab
   switch (tab) {
     case 0:
       return <HomePage />;
@@ -70,14 +72,14 @@ function display(tab: number, displaysInf: any) {
 function displayTab(tab: number, displaysInf: any) {
   const homePageTab = [<Introduction />, <Sommaire />]
   const monCVTab = [<AproposDeMoi />, <CurriculumVitae />]
-  const mesCompetencesTab = [<JavaScript />, <ReactLg />, <NodeJs />]
+  const mesCompetencesTab = [<JavaScript />, <ReactLg />, <NodeJs />, <LanguageC />]
   const projetsTab = [<Project1 />, <Project2 />]
   const mesEtudesTab = [<Lycee />, <Epitech />, <ESMA />, <ESUP />]
   const contactsTab = [<Linkedin />, <Gmail />, <Telephone />, <Others />]
   const prédefTab = [<HomePage />, <Softskills />]
 
   displaysInf.diplaySecondMenuIndex = tab
-  switch (displaysInf.diplayFirstMenuIndex) {
+  switch (displaysInf.displayFirstMenuIndex) {
     case 0:
       return homePageTab[tab];
     case 1:
@@ -118,8 +120,8 @@ function App() {
         setIcons1(["personal", "cv"]);
         break;
       case 2:
-        setTabs1(["JavaScript", "React", "Node.js"]);
-        setIcons1(["js", "react", "node"]);
+        setTabs1(["JavaScript", "React", "Node.js", "C"]);
+        setIcons1(["js", "react", "node", "c"]);
         break;
       case 3:
         setTabs1(["Projet1", "Projet2"]);
@@ -151,29 +153,29 @@ function App() {
         <div className={`${GLOBALMENUE}`}>
           {/* Premier menu à gauche */}
           <BarreMenue
-            className={`${SECONDARYMENUE}`}
+            className={SECONDARYMENUE}
             setTab={setTab1}
             tabs={tabs_menue1}
             icons={icons_menue1} />
           {/* Second menu centré en haut */}
           <BarreMenue
-            className={`${ROOTMENUE}`}
+            className={ROOTMENUE}
             setTab={handleTab2Click}
             tabs={['Home page', 'À propos de moi/CV', 'Mes Competences', 'Projets', 'Mes Etudes', 'Contact']}
             icons={["home", "cv", "competence", "projet", "etudes", "contact"]} />
-          <div className={`${PARAMETERMENUE}`}>
+          <div className={PARAMETERMENUE}>
             {/* Terminal */}
             <div>
               <Button
-                InternClassName={`${TERMINALBUTTON}`}
-                name={`Ouvrir le terminal`}
+                InternClassName={BUTTONTERMINAL}
+                name="Ouvrir le terminal"
                 onClick={() => setShowTerminal(true)}
                 icon="terminal"/>
               {showTerminal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
                   <div className="relative bg-black text-white rounded-2xl p-6 w-[680px] max-w-full shadow-2xl border border-yellow-400">
                     <Button
-                      InternClassName={`${TERMINALBUTTONQUIT}`}
+                      InternClassName={`${BUTTONTERMINALQUIT}`}
                       onClick={() => setShowTerminal(false)}
                       icon="cross"/>
                     <TerminalLinux />
@@ -181,20 +183,28 @@ function App() {
                 </div>
               )}
             </div>
-            <ScrollingBarre />
+            <Croll />
           </div>
         </div>
         <div className={`${PAGESCROLLDOWN}`}>
-            {/* Affiche le résultat des tab de la première barre de menu */}
-            <div className={`${TOPPAGESCROLLDOWN}`}>
-              {display(tab_menue2, displaysInf)}
-            </div>
-            <hr />
-            {/* Affiche les résultat des tab de la seconde barre de menu */}
-            <div className={`${DOWNPAGESCROLLDOWN}`}>
-              {displayTab(tab_menue1, displaysInf)}
-            </div>
+          {/* Affiche le résultat des tab de la première barre de menu */}
+          <div className={`${TOPPAGESCROLLDOWN}`}>
+            {display(tab_menue2, displaysInf)}
           </div>
+          <hr />
+          {/* Affiche les résultat des tab de la seconde barre de menu */}
+          <div className={`${DOWNPAGESCROLLDOWN}`}>
+            {displayTab(tab_menue1, displaysInf)}
+          </div>
+        </div>
+        <footer className={FOOTER}>
+          <p>© 2025 Alan Gainie - Tous droits réservés</p>
+          <nav>
+            <a href="/mentions-legales">Mentions légales </a>
+            |
+            <a href="/confidentialite"> Confidentialité</a>
+          </nav>
+        </footer>
       </div >
     </>
   );

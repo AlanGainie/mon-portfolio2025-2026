@@ -26,7 +26,7 @@ import youtube from "../../assets/icones/youtube.svg"
 // secondary page
 import react from "../../assets/icones/react.svg"
 import js from "../../assets/icones/js.svg"
-// import c from "../../assets/icones/c.svg"
+import c from "../../assets/icones/c.svg"
 // import cpp from "../../assets/icones/cpp.svg"
 import node from "../../assets/icones/node.svg"
 // import typescript from "../../assets/icones/typescript.svg"
@@ -39,6 +39,8 @@ import node from "../../assets/icones/node.svg"
 import jdr from "../../assets/icones/jdr.svg"
 import revision from "../../assets/icones/revision.svg"
 import personal from "../../assets/icones/personal.svg"
+
+import arrowdown from "../../assets/icones/arrowdown.svg"
 
 function SetIcon(icon: string) {
   switch (icon) {
@@ -94,8 +96,8 @@ function SetIcon(icon: string) {
       return js;
     case "node":
       return node;
-    // case "c":
-    //   return c;
+    case "c":
+      return c;
     // case "cpp":
     //   return cpp;
 
@@ -105,6 +107,9 @@ function SetIcon(icon: string) {
       return revision;
     case "personal":
       return personal;
+
+    case "arrowdown":
+      return arrowdown;
   }
 }
 

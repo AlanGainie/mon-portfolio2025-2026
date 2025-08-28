@@ -1,5 +1,6 @@
 import React from 'react';
 import Carrousel from '../composants/Carrousel';
+import { FLEXCOL } from '../../styles/tw';
 
 function Lycee() {
     const imagePaths = [
@@ -10,14 +11,14 @@ function Lycee() {
     ];
 
     const captions = [
-        'renecassin',
-        'artduspectacle',
-        'joliocurie',
-        'internat'
+        'Rene cassin Montfort sur Meu',
+        'Art du spectacle',
+        'Lycée général et technologique Jolio Currie Rennes',
+        'Internat de Jolio Currie Rennes'
     ];
 
     return (
-        <>
+        <div className={FLEXCOL}>
             <h1>Lycee.</h1>
             <Carrousel
                 slides={imagePaths.map((src, index) => (
@@ -39,7 +40,7 @@ function Lycee() {
             <p>
                 Ayant repris mes marques après le collège, j'ai découvert une nouvelle passion : "l'informatique". [...]
             </p>
-        </>
+        </div>
     );
 }
 

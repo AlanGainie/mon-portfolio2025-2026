@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Button from "./Button.tsx";
-import { BUTTONSCROLLDOWN } from "../../styles/tw.ts";
+import { BUTTONCROLLDOWN } from "../../styles/tw.ts";
 
-function ScrollingBarre({ name }: { name?: string }) {
+function Croll({ name }: { name?: string }) {
     const [scrollPosition, setScrollPosition] = useState(0);
 
     const scrollPage = () => {
@@ -15,14 +15,14 @@ function ScrollingBarre({ name }: { name?: string }) {
     };
 
     return (
-        <>
-            <Button
-                InternClassName={`${BUTTONSCROLLDOWN}`}
-                name="↓"
-                onClick={scrollPage}
-            />
-        </>
+        <Button
+            InternClassName={BUTTONCROLLDOWN}
+            icon="arrowdown"
+            name=" "
+            onClick={scrollPage}
+            disabled
+        />
     );
 }
 
-export default ScrollingBarre;
+export default Croll;

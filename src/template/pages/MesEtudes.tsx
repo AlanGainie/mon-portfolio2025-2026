@@ -1,9 +1,12 @@
 import React from 'react';
+import { FLEXROW } from '../../styles/tw';
 
 function MesEtudes() {
   return (
     <>
-      <p>Voici mes études :</p>
+      <div className={FLEXROW}>
+        Voici mes études :
+      </div>
     </>
   )
 }

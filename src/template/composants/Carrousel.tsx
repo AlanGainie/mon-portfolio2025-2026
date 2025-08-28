@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BUTTONCARROUSELLE, BUTTONCARROUSELLEARROWLEFT, BUTTONCARROUSELLEARROWRIGHT, GLOBALCARROUSELLE, SLIDECARROUSELLE } from '../../styles/tw';
 
 interface CarrouselProps {
     slides: React.ReactNode[];
@@ -45,8 +46,8 @@ const Carrousel: React.FC<CarrouselProps> = ({
     }
 
     return (
-        <div className="relative w-full max-w-4xl mx-auto shadow-xl select-none">
-            <div className="w-full h-96 overflow-hidden flex items-center justify-center bg-white">
+        <div className={`${GLOBALCARROUSELLE}`}>
+            <div className={`${SLIDECARROUSELLE}`}>
                 {slides[currentIndex]}
             </div>
 
@@ -59,7 +60,7 @@ const Carrousel: React.FC<CarrouselProps> = ({
             {/* Flèche gauche */}
             <button
                 onClick={goToPrevious}
-                className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-2 text-black hover:bg-opacity-100 transition"
+                className={BUTTONCARROUSELLEARROWLEFT}
                 aria-label="Slide précédente"
             >
                 ◀
@@ -68,7 +69,7 @@ const Carrousel: React.FC<CarrouselProps> = ({
             {/* Flèche droite */}
             <button
                 onClick={goToNext}
-                className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-2 text-black hover:bg-opacity-100 transition"
+                className={BUTTONCARROUSELLEARROWRIGHT}
                 aria-label="Slide suivante"
             >
                 ▶
