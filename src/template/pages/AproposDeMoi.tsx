@@ -1,7 +1,3 @@
-import React from 'react';
-import MonCV from '../MonCV';
-import CurriculumVitae from './CurriculumVitae.tsx';
-
 function AproposDeMoi() {
     return (
         <>
@@ -11,14 +7,14 @@ function AproposDeMoi() {
             <p>
                 J’aime la créativité et je me suis fixé comme objectif d’en savoir toujours plus, jour après jour dans le domaine du développement informatique qui me passionne.
                 Vous voulez en savoir plus. Je vous propose ainsi de débuter par une marque de prestance à l’époque Antique mon :
-                <span
+                {/* <span
                     onClick={() => {
                         { monCVTab[1] }
                     }}
                     className="text-blue-600 cursor-pointer underline"
                 >
                     Curriculum Vitae
-                </span>.
+                </span>. */}
             </p >
         </>
     )

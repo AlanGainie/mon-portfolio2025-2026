@@ -1,4 +1,3 @@
-import React from 'react';
 import BarreMenue from './template/organismes/BarreMenue.tsx';
 import './styles/App.css';
 import './styles/tw.ts';
@@ -27,7 +26,6 @@ import Introduction from './template/pages/Introduction.tsx';
 import NodeJs from './template/pages/NodeJs.tsx';
 import JavaScript from './template/pages/JavaScript.tsx';
 import Lycee from './template/pages/Lycee.tsx';
-import Softskills from './template/pages/Softskills.tsx';
 import Telephone from './template/pages/Telephone.tsx';
 import Sommaire from './template/pages/Sommaire.tsx';
 import ReactLg from './template/pages/ReactLg.tsx';
@@ -36,10 +34,9 @@ import Project1 from './template/pages/Project1.tsx';
 import Project2 from './template/pages/Project2.tsx';
 
 // Utilitaire
-import ScrollingBarre from './template/composants/Croll.tsx';
-import Carrousel from './template/composants/Carrousel.tsx';
-import { BARREMENUE, BUTTONTERMINAL, BUTTONTERMINALQUIT, DIRECTIONS, DOWNPAGESCROLLDOWN, FLEXCOL, FLEXROW, FOOTER, GLOBALMENUE, PAGESCROLLDOWN, PAGESGLOBAL, PARAMETERMENUE, PASTEL, ROOTMENUE, SECONDARYMENUE, THEMES, TOPPAGESCROLLDOWN } from './styles/tw.ts';
-import Theme from './template/organismes/Themes.tsx';
+// import Carrousel from './template/composants/Carrousel.tsx';
+import { BUTTONTERMINAL, BUTTONTERMINALQUIT, DOWNPAGESCROLLDOWN, FOOTER, GLOBALMENUE, PAGESCROLLDOWN, PAGESGLOBAL, PARAMETERMENUE, ROOTMENUE, SECONDARYMENUE, TOPPAGESCROLLDOWN } from './styles/tw.ts';
+// import Theme from './template/organismes/Themes.tsx';
 import LanguageC from './template/pages/C.tsx';
 import Croll from './template/composants/Croll.tsx';
 //--------
@@ -76,7 +73,7 @@ function displayTab(tab: number, displaysInf: any) {
   const projetsTab = [<Project1 />, <Project2 />]
   const mesEtudesTab = [<Lycee />, <Epitech />, <ESMA />, <ESUP />]
   const contactsTab = [<Linkedin />, <Gmail />, <Telephone />, <Others />]
-  const prédefTab = [<HomePage />, <Softskills />]
+  // const prédefTab = [<HomePage />, <Softskills />]
 
   displaysInf.diplaySecondMenuIndex = tab
   switch (displaysInf.displayFirstMenuIndex) {
@@ -102,8 +99,6 @@ function App() {
   const [tab_menue2, setTab2] = useState(0);
   const [tabs_menue1, setTabs1] = useState(['...']);
   const [icons_menue1, setIcons1] = useState(['more']);
-  const [displayFirstMenuIndex, setDisplayFirstMenuIndex] = useState<number>(0);
-  const [displaySecondMenuIndex, setDisplaySecondMenuIndex] = useState<number>(0);
 
   const [showTerminal, setShowTerminal] = useState(false);
 

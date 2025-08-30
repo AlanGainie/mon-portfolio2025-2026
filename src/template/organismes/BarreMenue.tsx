@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Button from '../composants/Button';
 
 // Onglets passés en props (dynamique)

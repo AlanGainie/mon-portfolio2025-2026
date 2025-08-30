@@ -1,4 +1,3 @@
-import React from 'react';
 import { FLEXCOL } from '../../styles/tw';
 
 function ESMA() {

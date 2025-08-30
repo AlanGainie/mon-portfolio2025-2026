@@ -18,7 +18,7 @@ function Croll({ name }: { name?: string }) {
         <Button
             InternClassName={BUTTONCROLLDOWN}
             icon="arrowdown"
-            name=" "
+            name={name ? name : " "}
             onClick={scrollPage}
             disabled
         />

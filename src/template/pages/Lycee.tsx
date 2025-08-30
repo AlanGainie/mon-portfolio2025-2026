@@ -1,4 +1,3 @@
-import React from 'react';
 import Carrousel from '../composants/Carrousel';
 import { FLEXCOL } from '../../styles/tw';
 

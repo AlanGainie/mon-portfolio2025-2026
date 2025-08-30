@@ -1,5 +1,3 @@
-import React from 'react';
-
 function ErrorGest({ name }: { name: string }) {
   return (
     <div>

@@ -2,8 +2,8 @@
 // TODO: HAVE TO FIXED
 const developer = true;
 export function DEVELOPERVIEW(displayed: true, level: number): string;
-export function DEVELOPERVIEW(displayed: false | undefined, level?: never): undefined;
-export function DEVELOPERVIEW(displayed?: boolean | undefined, level?: number) {
+export function DEVELOPERVIEW(displayed?: false | undefined, level?: never): undefined;
+export function DEVELOPERVIEW(displayed?: boolean | undefined, level?: number): string | undefined {
     if (!displayed)
         return undefined;
     switch (level) {
@@ -25,7 +25,7 @@ export function DEVELOPERVIEW(displayed?: boolean | undefined, level?: number) {
 // Agencement de la page
 export const FLEXCOL = `flex flex-col md:flex-col`;
 export const FLEXROW = `flex flex-row md:flex-row`;
-export const GRID = ``;
+export const GRID = `nothing`;
 
 export const error = "Erreur tailwind pas de mutation disponible";
 
@@ -57,7 +57,7 @@ export const DIRECTIONS = (position: "top" | "left" | "right" | "bottom" | "cent
 };
 
 // Animation
-export const SLICE = ``;
+export const SLICE = `nothing`;
 
 export const FONDU = (percent?: number) => {
     let opacity = 'hover:opacity-100';
@@ -97,10 +97,10 @@ export const PAGESGLOBAL =  `w-full min-h-screen h-full ${PAGESGLOBALBG}`;
 
     // Structure de base menue
     // export const COLORSBARREMENUEV01 = `bg-gray-300 border-yellow-500 border-7`;
-    const COLORSBARREMENUE = ``;
+    const COLORSBARREMENUE = `nothing`;
     export const BARREMENUE = `gap-4 rounded-xl ${COLORSBARREMENUE}`;
 
-    const BANNIERE = ``;
+    // const BANNIERE = ``;
     export const GLOBALMENUE = `${DEVELOPERVIEW(developer, 1)} ${FLEXROW} gap-1 p-1 rounded-xl`;
         // Root Menue
         export const ROOTMENUEBG = `bg-[url('/home/againie/Desktop/AppPortefolioReact/Mon-portfolio2025-2026/src/assets/picture/background.svg')]`
@@ -120,8 +120,8 @@ export const PAGESGLOBAL =  `w-full min-h-screen h-full ${PAGESGLOBALBG}`;
     export const SLIDECARROUSELLE = `${FLEXROW} w-full h-96 overflow-hidden items-center justify-center ${SLIDECARROUSELLEBG}`;
 
     // Structure thèmes
-    export const THEMES = ``;
-    export const PASTEL = ``;
+    export const THEMES = `nothing`;
+    export const PASTEL = `transition-transform duration-300 ease-in-out`;
 
     // Structure footer
     const FOOTERCOLORS = `bg-gray-900 text-white shadow-[0_10px_10px_rgba(255,55,0,0.6)]`;

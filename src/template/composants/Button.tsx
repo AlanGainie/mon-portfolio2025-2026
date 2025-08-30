@@ -52,8 +52,6 @@ function SetIcon(icon: string) {
       return arrow;
     case "more":
       return more;
-    case "at":
-      return at;
     case "etudes":
       return etudes;
     case "contact":

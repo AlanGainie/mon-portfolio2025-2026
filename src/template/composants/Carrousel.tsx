@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BUTTONCARROUSELLE, BUTTONCARROUSELLEARROWLEFT, BUTTONCARROUSELLEARROWRIGHT, GLOBALCARROUSELLE, SLIDECARROUSELLE } from '../../styles/tw';
+import { BUTTONCARROUSELLEARROWLEFT, BUTTONCARROUSELLEARROWRIGHT, GLOBALCARROUSELLE, SLIDECARROUSELLE } from '../../styles/tw';
 
 interface CarrouselProps {
     slides: React.ReactNode[];
