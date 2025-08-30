@@ -7,5 +7,5 @@ export default defineConfig({
     tailwindcss(),
     react(),
   ],
-  base: './mon-portfolio-2025-2026/'
+  base: '/mon-portfolio-2025-2026/',
 });
