@@ -1,3 +1,6 @@
+import bgSvg from '../assets/picture/background.svg';
+import bgJpg from '../assets/picture/background.jpg';
+
 // Vue déveloper
 // TODO: HAVE TO FIXED
 const developer = true;
@@ -82,7 +85,7 @@ export const FONDU = (percent?: number) => {
     return `opacity-0 transition-opacity duration-700 ${opacity}`;
 }
 
-const PAGESGLOBALBG = "bg-[url('src/assets/picture/background.jpg')] bg-no-repeat bg-cover"
+const PAGESGLOBALBG = `bg-[url('${bgJpg}')] bg-no-repeat bg-cover`
 export const PAGESGLOBAL =  `w-full min-h-screen h-full ${PAGESGLOBALBG}`;
 
 // Structure style pages
@@ -103,10 +106,10 @@ export const PAGESGLOBAL =  `w-full min-h-screen h-full ${PAGESGLOBALBG}`;
     // const BANNIERE = ``;
     export const GLOBALMENUE = `${DEVELOPERVIEW(developer, 1)} ${FLEXROW} gap-1 p-1 rounded-xl`;
         // Root Menue
-        export const ROOTMENUEBG = `bg-[url('/home/againie/Desktop/AppPortefolioReact/Mon-portfolio2025-2026/src/assets/picture/background.svg')]`
+        export const ROOTMENUEBG = `bg-[url('${bgSvg}')]`
         export const ROOTMENUE = `${developer ? DEVELOPERVIEW(developer, 2) : FONDU(20)} ${FLEXROW} ${BARREMENUE} justify-center w-[65%] h-full p-1 ${ROOTMENUEBG}`;
         // Secondary Menue
-        export const SECONDARYMENUE = `${developer ? DEVELOPERVIEW(developer, 2) : FONDU()} ${FLEXCOL} ${BARREMENUE} justify-start bg-[url('/home/againie/Desktop/AppPortefolioReact/Mon-portfolio2025-2026/src/assets/picture/background.svg')] w-[15%] h-full p-1`;
+        export const SECONDARYMENUE = `${developer ? DEVELOPERVIEW(developer, 2) : FONDU()} ${FLEXCOL} ${BARREMENUE} justify-start bg-[url('${bgSvg}')] w-[15%] h-full p-1`;
         // Parameter Menue
         export const PARAMETERMENUE = `${developer ? DEVELOPERVIEW(developer, 2) : FONDU()} ${FLEXROW} ${BARREMENUE} justify-end w-[20%] h-full p-1`;
 

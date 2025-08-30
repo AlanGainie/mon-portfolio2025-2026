@@ -1,3 +1,5 @@
+import provectio from '../src/assets/picture/provectio.webp';
+
 function JavaScript() {
     return (
         <>
@@ -6,7 +8,7 @@ function JavaScript() {
                 Lors de ce début de première année en BTS SIO option SLAM, j’ai eu la chance de réaliser un stage de deux semaines, du 7 février au 21 février, et ce au profit de Provectio qui est une ESN (Entreprise de Services du Numérique) située à Rennes. Elle est spécialisée dans l'infogérance, la cybersécurité, le cloud computing et les télécommunications.
                 Elle a été fondée en 2004 par Maxime Charlès dans le but d’accompagner principalement les TPE et PME du Grand Ouest de la France dans leur transformation numérique.
                 <div className='flex justify-center'>
-                    <img alt="html image example" src="../src/assets/picture/provectio.webp" />
+                    <img alt="html image example" src={provectio} />
                 </div>
                 J’ai pu effectuer mon stage dans le pôle web qui comporte à ce jour seulement Guillaume Collignon mon maître de stage. Et ceux dans le SOC/NOC (lieu centralisé où les équipes informatiques peuvent surveiller en permanence les performances et la santé d'un réseau) de Provectio.
                 Stage 2 (6 semaine du 10/06/2025 au 22/07/2025) —

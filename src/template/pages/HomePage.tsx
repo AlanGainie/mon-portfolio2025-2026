@@ -1,5 +1,6 @@
 // import { useState } from 'react';
 import { FLEXCOL } from '../../styles/tw';
+import identity_picture from '../src/assets/picture/IMG_20250129_092536_199.jpg';
 
 {/* Drapeau animé */}
 // function Flag() {
@@ -31,7 +32,7 @@ function HomePage() {
     <div className={FLEXCOL}>
       {/* <Flag/> */}
       < h1 > Bienvennue sur mon portfolio informatique.</h1 >
-      <img className="w-[70%]" alt="html image example" src="../src/assets/picture/IMG_20250129_092536_199.jpg" />
+      <img className="w-[70%]" alt="html image example" src={identity_picture} />
       <hr />
       <p>Bienvennue sur mon portfolio informatique </p>
     </div>
