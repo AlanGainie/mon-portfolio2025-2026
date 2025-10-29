@@ -1,4 +1,9 @@
 import { BUTTONCOLORS, FLEXROW } from "../../styles/tw"
+
+//gestion d'erreur
+import errorPicture from "../../assets/icones/errorPicture.svg"
+
+//autres
 import terminal from "../../assets/icones/terminal.svg"
 import cross from "../../assets/icones/cross.svg"
 import arrow from "../../assets/icones/arrow.svg"
@@ -9,6 +14,7 @@ import home from "../../assets/icones/home.svg"
 import cv from "../../assets/icones/cv.svg"
 import competence from "../../assets/icones/competence.svg"
 import projet from "../../assets/icones/projet.svg"
+import scribermachine from "../../assets/icones/scribermachine.svg"
 
 //réseau sociaux
 import linkedin from "../../assets/icones/linkedin.svg"
@@ -108,10 +114,16 @@ function SetIcon(icon: string) {
 
     case "arrowdown":
       return arrowdown;
+
+    case "scribermachine":
+      return scribermachine;
+
+    default:
+      return errorPicture;
   }
 }
 
-function Button({ name, onClick, icon, InternClassName, clicked, disabled, uncolor }: { name?: string, onClick: any, icon?: string, InternClassName?: any,  clicked?: boolean, disabled?: boolean, uncolor?: boolean }) {
+function Button({ name, onClick, icon, InternClassName, clicked, disabled, uncolor }: { name?: string, onClick: React.MouseEventHandler<HTMLElement>, icon?: string, InternClassName?: string,  clicked?: boolean, disabled?: boolean, uncolor?: boolean }) {
   let COLORS = ``;
   let ICONCOLORS = ``;
   if (!uncolor)

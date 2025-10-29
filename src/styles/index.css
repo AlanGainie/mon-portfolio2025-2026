@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,6 +15,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/*Link*/
 a {
   font-weight: 500;
   color: #646cff;
@@ -22,19 +33,27 @@ a {
 a:hover {
   color: #535bf2;
 }
+/* _________________________________ */
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+/*Size and font texte*/
+h1 {
+  @apply text-center text-7xl font-bold underline;
 }
 
-/* h1 {
-  @apply text-center text-8xl font-bold;
-} */
+h2 {
+  @apply text-center text-5xl font-bold;
+}
 
+h3 {
+  @apply text-center text-3xl text-gray-400;
+}
+
+h4 {
+  @apply text-center text-2xl;
+}
+/* _________________________________ */
+
+/* Gestion button */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -55,9 +74,9 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+/* _________________________________ */
 
 /* Element relatif au drapeau animer */
-/* _________________________________ */
 .flag-container {
   position: relative;
   width: 95%;
@@ -78,7 +97,6 @@ button:focus-visible {
   transform: scale(1.1);
   /* effet dolly zoom simulé */
 }
-
 /* ________________________________________ */
 
 /* Scrollbar personnalisée */
@@ -95,9 +113,9 @@ button:focus-visible {
   border-radius: 10px;
   border: 2px solid #f1f1f1;
 }
-
 /* ________________________________________ */
 
+/*  */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -108,3 +126,4 @@ button:focus-visible {
     color: #747bff;
   }
 }
+/* _________________________________ */

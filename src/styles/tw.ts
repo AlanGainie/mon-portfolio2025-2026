@@ -3,9 +3,9 @@ import bgJpg from '../assets/picture/background.jpg';
 
 // Vue déveloper
 // TODO: HAVE TO FIXED
-const developer = true;
+const developer = false;
 export function DEVELOPERVIEW(displayed: true, level: number): string;
-export function DEVELOPERVIEW(displayed?: false | undefined, level?: never): undefined;
+export function DEVELOPERVIEW(displayed?: false | undefined, level?: number | undefined): undefined;
 export function DEVELOPERVIEW(displayed?: boolean | undefined, level?: number): string | undefined {
     if (!displayed)
         return undefined;
@@ -84,8 +84,8 @@ export const FONDU = (percent?: number) => {
         }
     return `opacity-0 transition-opacity duration-700 ${opacity}`;
 }
-
-const PAGESGLOBALBG = `bg-[url('${bgJpg}')] bg-no-repeat bg-cover`
+// ${encodeURIComponent(bgJpg)}
+const PAGESGLOBALBG = `bg-[url('/home/againie/Desktop/AppPortefolioReact/Mon-portfolio2025-2026/src/assets/picture/background.svg')] bg-no-repeat bg-cover`
 export const PAGESGLOBAL =  `w-full min-h-screen h-full ${PAGESGLOBALBG}`;
 
 // Structure style pages
@@ -105,13 +105,13 @@ export const PAGESGLOBAL =  `w-full min-h-screen h-full ${PAGESGLOBALBG}`;
 
     // const BANNIERE = ``;
     export const GLOBALMENUE = `${DEVELOPERVIEW(developer, 1)} ${FLEXROW} gap-1 p-1 rounded-xl`;
+    export const MENUEBG = `bg-neutral-800 text-green-500 font-semibold transition-colors duration-300 mt-1`
         // Root Menue
-        export const ROOTMENUEBG = `bg-[url('${bgSvg}')]`
-        export const ROOTMENUE = `${developer ? DEVELOPERVIEW(developer, 2) : FONDU(20)} ${FLEXROW} ${BARREMENUE} justify-center w-[65%] h-full p-1 ${ROOTMENUEBG}`;
+        export const ROOTMENUE = `${developer ? DEVELOPERVIEW(developer, 2) : `nothing` } ${FLEXROW} ${BARREMENUE} justify-center w-[65%] h-full gap-4 px-4 py-2 rounded-lg ${MENUEBG}`;
         // Secondary Menue
-        export const SECONDARYMENUE = `${developer ? DEVELOPERVIEW(developer, 2) : FONDU()} ${FLEXCOL} ${BARREMENUE} justify-start bg-[url('${bgSvg}')] w-[15%] h-full p-1`;
+        export const SECONDARYMENUE = `${developer ? DEVELOPERVIEW(developer, 2) : `nothing`} ${FLEXCOL} ${BARREMENUE} justify-start bg-[url('${bgSvg}')] w-[15%] h-full p-1 ${MENUEBG}`;
         // Parameter Menue
-        export const PARAMETERMENUE = `${developer ? DEVELOPERVIEW(developer, 2) : FONDU()} ${FLEXROW} ${BARREMENUE} justify-end w-[20%] h-full p-1`;
+        export const PARAMETERMENUE = `${developer ? DEVELOPERVIEW(developer, 2) : `nothing`} ${FLEXROW} ${BARREMENUE} justify-end w-[20%] h-full p-1 ${MENUEBG}`;
 
 
 // Structure style composants
@@ -160,3 +160,6 @@ export const PAGESGLOBAL =  `w-full min-h-screen h-full ${PAGESGLOBALBG}`;
     
     export const BUTTONCARROUSELLEARROWLEFT = `${BUTTONCARROUSELLEARROW} left-2`;
     export const BUTTONCARROUSELLEARROWRIGHT = `${BUTTONCARROUSELLEARROW} right-2`;
+
+    // Texte style
+    export const TEXTLEGENDE = `text-gray-400 italic text-[12px]`

@@ -1,6 +1,7 @@
 // import { useState } from 'react';
-import { FLEXCOL } from '../../styles/tw';
-import identity_picture from '../src/assets/picture/IMG_20250129_092536_199.jpg';
+import { FLEXCOL, FLEXROW } from '../../styles/tw';
+import identity_picture from '../../assets/picture/IMG_20250129_092536_199.jpg';
+import Crop from '../composants/Crop';
 
 {/* Drapeau animé */}
 // function Flag() {
@@ -16,7 +17,7 @@ import identity_picture from '../src/assets/picture/IMG_20250129_092536_199.jpg'
 //         className={`relative w-full cursor-pointer overflow-hidden flag-container ${reveal ? 'reveal' : ''}`}
 //         onClick={handleClick}
 //       >
-//         <img src="../src/assets/picture/Flag_of_Brittany_(Gwenn_ha_du).svg" alt="Drapeau" className="w-full h-full object-cover flag" />
+//         <img src="../../assets/picture/Flag_of_Brittany_(Gwenn_ha_du).svg" alt="Drapeau" className="w-full h-full object-cover flag" />
 //         {!reveal && (
 //           <div className="absolute inset-0 bg-black/80 mask z-10 transition-all duration-700"></div>
 //         )}
@@ -32,8 +33,13 @@ function HomePage() {
     <div className={FLEXCOL}>
       {/* <Flag/> */}
       < h1 > Bienvennue sur mon portfolio informatique.</h1 >
-      <img className="w-[70%]" alt="html image example" src={identity_picture} />
-      <hr />
+      <br />
+      <Crop
+        path={identity_picture}
+        height={500} width={500}
+        errorloadtext="photo d'identité"
+        legende="Photo d'identité mai 2025 "/>
+      <br />
       <p>Bienvennue sur mon portfolio informatique </p>
     </div>
   )

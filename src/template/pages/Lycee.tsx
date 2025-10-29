@@ -1,12 +1,13 @@
 import Carrousel from '../composants/Carrousel';
 import { FLEXCOL } from '../../styles/tw';
+import Crop from '../composants/Crop';
 
 function Lycee() {
     const imagePaths = [
-        '../src/assets/picture/renecassin.avif',
-        '../src/assets/picture/artduspectacle.JPG',
-        '../src/assets/picture/joliocurie.jpg',
-        '../src/assets/picture/internat.jpeg',
+        '../../assets/picture/renecassin.avif',
+        '../../assets/picture/artduspectacle.JPG',
+        '../../assets/picture/joliocurie.jpg',
+        '../../assets/picture/internat.jpeg',
     ];
 
     const captions = [
@@ -21,12 +22,13 @@ function Lycee() {
             <h1>Lycee.</h1>
             <Carrousel
                 slides={imagePaths.map((src, index) => (
-                    <img
-                        key={index}
-                        src={src}
-                        alt={captions[index]}
+                    <Crop
                         className="h-full object-contain"
-                    />
+                        path={src}
+                        height={500}
+                        width={500}
+                        errorloadtext={captions[index]}
+                        key={index}/>
                 ))}
                 captions={captions}
                 autoScroll={true}
@@ -35,7 +37,7 @@ function Lycee() {
             <p>
                 J'ai débuté le Lycée en seconde au lycée René Cassin à Montfort-sur-Meu.
             </p>
-            <img src="../src/assets/picture/renecassin.avif" />
+            <Crop path="../../assets/picture/renecassin.avif" height={500} width={500}/>
             <p>
                 Ayant repris mes marques après le collège, j'ai découvert une nouvelle passion : "l'informatique". [...]
             </p>

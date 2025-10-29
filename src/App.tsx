@@ -1,5 +1,8 @@
-import BarreMenue from './template/organismes/BarreMenue.tsx';
-import './styles/App.css';
+// Se portfolio est réaliser en React 19 de fais quelques signature classique
+// comme JSX.Element deviennent à présent : React.JSX.Element toutefois je suis
+// en Typescript 5
+
+import './styles/index.css'
 import './styles/tw.ts';
 import { useState } from 'react';
 
@@ -39,6 +42,7 @@ import { BUTTONTERMINAL, BUTTONTERMINALQUIT, DOWNPAGESCROLLDOWN, FOOTER, GLOBALM
 // import Theme from './template/organismes/Themes.tsx';
 import LanguageC from './template/pages/C.tsx';
 import Croll from './template/composants/Croll.tsx';
+import Page from './template/composants/Page.tsx';
 //--------
 
 
@@ -94,70 +98,32 @@ function displayTab(tab: number, displaysInf: any) {
   }
 }
 
+export const content = (tab_menue2: any, tab_menue1: any) => (
+  <div className={`${PAGESCROLLDOWN}`}>
+    {/* Affiche le résultat des tab de la première barre de menu */}
+    <div className={`${TOPPAGESCROLLDOWN}`}>
+      {display(tab_menue2, displaysInf)}
+    </div>
+    <hr />
+    {/* Affiche les résultat des tab de la seconde barre de menu */}
+    <div className={`${DOWNPAGESCROLLDOWN}`}>
+      {displayTab(tab_menue1, displaysInf)}
+    </div>
+  </div>
+);
+
 function App() {
-  const [tab_menue1, setTab1] = useState(0);
-  const [tab_menue2, setTab2] = useState(0);
-  const [tabs_menue1, setTabs1] = useState(['...']);
-  const [icons_menue1, setIcons1] = useState(['more']);
-
   const [showTerminal, setShowTerminal] = useState(false);
-
-  const handleTab2Click = (tabIndex: number) => {
-    setTab1(0);
-    setTab2(tabIndex);
-    switch (tabIndex) {
-      case 0:
-        setTabs1(["Introduction", "Sommaire"]);
-        setIcons1(["", ""]);
-        break;
-      case 1:
-        setTabs1(["A propos de moi", "Curriculum Vitae"]);
-        setIcons1(["personal", "cv"]);
-        break;
-      case 2:
-        setTabs1(["JavaScript", "React", "Node.js", "C"]);
-        setIcons1(["js", "react", "node", "c"]);
-        break;
-      case 3:
-        setTabs1(["Projet1", "Projet2"]);
-        setIcons1(["revision", "jdr"]);
-        break;
-      case 4:
-        setTabs1(["Lycée", "Epitech", "ESMA", "ESUP"]);
-        setIcons1(["", "", "", ""]);
-        break;
-      case 5:
-        setTabs1(["Linkedin", "Gmail", "Téléphone", "..."]);
-        setIcons1(["linkedin", "at", "contact", "more"]);
-        break;
-      default:
-        setTabs1(["Home page", "Softskills"]);
-        setIcons1(["home", ""]);
-        break;
-    }
-  };
 
   return (
     <>
-      {/* Il ne faut pas utiliser de **head** en react mais : react-helmet */}
-      <head>
-        <link rel="shortcut icon" href="../icone_portfolio.png" type="image/x-icon" />
-      </head>
       {/* Définir une taille de fenêtre de + de 2000px pour pouvoir scroll down ou up */}
       <div className={`${PAGESGLOBAL}`}>
         <div className={`${GLOBALMENUE}`}>
-          {/* Premier menu à gauche */}
-          <BarreMenue
-            className={SECONDARYMENUE}
-            setTab={setTab1}
-            tabs={tabs_menue1}
-            icons={icons_menue1} />
-          {/* Second menu centré en haut */}
-          <BarreMenue
-            className={ROOTMENUE}
-            setTab={handleTab2Click}
-            tabs={['Home page', 'À propos de moi/CV', 'Mes Competences', 'Projets', 'Mes Etudes', 'Contact']}
-            icons={["home", "cv", "competence", "projet", "etudes", "contact"]} />
+          <Menue
+            content={null}
+            nbr={null}
+          />
           <div className={PARAMETERMENUE}>
             {/* Terminal */}
             <div>
@@ -181,25 +147,10 @@ function App() {
             <Croll />
           </div>
         </div>
-        <div className={`${PAGESCROLLDOWN}`}>
-          {/* Affiche le résultat des tab de la première barre de menu */}
-          <div className={`${TOPPAGESCROLLDOWN}`}>
-            {display(tab_menue2, displaysInf)}
-          </div>
-          <hr />
-          {/* Affiche les résultat des tab de la seconde barre de menu */}
-          <div className={`${DOWNPAGESCROLLDOWN}`}>
-            {displayTab(tab_menue1, displaysInf)}
-          </div>
-        </div>
-        <footer className={FOOTER}>
-          <p>© 2025 Alan Gainie - Tous droits réservés</p>
-          <nav>
-            <a href="/mentions-legales">Mentions légales </a>
-            |
-            <a href="/confidentialite"> Confidentialité</a>
-          </nav>
-        </footer>
+        <Page
+          content={null}
+          type={undefined}
+          />
       </div >
     </>
   );
