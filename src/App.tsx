@@ -124,28 +124,33 @@ function App() {
             content={null}
             nbr={null}
           />
-          <div className={PARAMETERMENUE}>
-            {/* Terminal */}
-            <div>
-              <Button
-                InternClassName={BUTTONTERMINAL}
-                name="Ouvrir le terminal"
-                onClick={() => setShowTerminal(true)}
-                icon="terminal"/>
-              {showTerminal && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-                  <div className="relative bg-black text-white rounded-2xl p-6 w-[680px] max-w-full shadow-2xl border border-yellow-400">
-                    <Button
-                      InternClassName={`${BUTTONTERMINALQUIT}`}
-                      onClick={() => setShowTerminal(false)}
-                      icon="cross"/>
-                    <TerminalLinux />
-                  </div>
+          <Menue
+            content={
+              <div className={PARAMETERMENUE}>
+                {/* Terminal */}
+                <div>
+                  <Button
+                    InternClassName={BUTTONTERMINAL}
+                    name="Ouvrir le terminal"
+                    onClick={() => setShowTerminal(true)}
+                    icon="terminal"/>
+                  {showTerminal && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+                      <div className="relative bg-black text-white rounded-2xl p-6 w-[680px] max-w-full shadow-2xl border border-yellow-400">
+                        <Button
+                          InternClassName={`${BUTTONTERMINALQUIT}`}
+                          onClick={() => setShowTerminal(false)}
+                          icon="cross"/>
+                        <TerminalLinux />
+                      </div>
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-            <Croll />
-          </div>
+                <Croll />
+              </div>
+            }
+            nbr={null}
+          />
         </div>
         <Page
           content={null}
