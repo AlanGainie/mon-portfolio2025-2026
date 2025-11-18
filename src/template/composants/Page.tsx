@@ -2,7 +2,7 @@ import { JSX } from "react";
 import '../../styles/index.css'
 import '../../styles/tw.ts';
 
-// Page
+// Pages principales
 import ErrorGest from '../../template/pages/errorGest.tsx';
 import Epitech from '../../template/pages/Epitech.tsx';
 import AproposDeMoi from '../../template/pages/AproposDeMoi.tsx';
@@ -21,53 +21,63 @@ import ReactLg from '../../template/pages/ReactLg.tsx';
 import Others from '../../template/pages/Others.tsx';
 import Project1 from '../../template/pages/Project1.tsx';
 import Project2 from '../../template/pages/Project2.tsx';
-
-// Utilitaire
-// import Carrousel from './template/composants/Carrousel.tsx';
-import { DOWNPAGESCROLLDOWN, FOOTER } from '../../styles/tw.ts';
-// import Theme from './template/organismes/Themes.tsx';
 import LanguageC from '../../template/pages/C.tsx';
-//--------
-//
 
-// Pages des sous-menues
-const homePageTab = [<Introduction />, <Sommaire />]
-const monCVTab = [<AproposDeMoi />, <CurriculumVitae />]
-const mesCompetencesTab = [<JavaScript />, <ReactLg />, <NodeJs />, <LanguageC />]
-const projetsTab = [<Project1 />, <Project2 />]
-const mesEtudesTab = [<Lycee />, <Epitech />, <ESMA />, <ESUP />]
-const contactsTab = [<Linkedin />, <Gmail />, <Telephone />, <Others />]
+// Styles utilitaires
+import { DOWNPAGESCROLLDOWN, FOOTER } from '../../styles/tw.ts';
 
-function displaySousMenue(tab: number, displaysInf: any) {
-  displaysInf.diplaySecondMenuIndex = tab
-  // La liste des sous-menues
-  const pagesMenueList = [
-    homePageTab[tab],
-    monCVTab[tab],
-    mesCompetencesTab[tab],
-    projetsTab[tab],
-    mesEtudesTab[tab],
-    contactsTab[tab],
+// Pages des sous-menus
+const homePageTab = [<Introduction />, <Sommaire />];
+const monCVTab = [<AproposDeMoi />, <CurriculumVitae />];
+const mesCompetencesTab = [<JavaScript />, <ReactLg />, <NodeJs />, <LanguageC />];
+const projetsTab = [<Project1 />, <Project2 />];
+const mesEtudesTab = [<Lycee />, <Epitech />, <ESMA />, <ESUP />];
+const contactsTab = [<Linkedin />, <Gmail />, <Telephone />, <Others />];
+
+type DisplaysInf = { displayFirstMenuIndex: number; displaySecondMenuIndex: number };
+
+// Affiche les sous-pages selon le menu sélectionné
+function displaySousMenue(tab: number, displaysInf: DisplaysInf): JSX.Element {
+  displaysInf.displaySecondMenuIndex = tab;
+
+  const pagesArrays = [
+    homePageTab,
+    monCVTab,
+    mesCompetencesTab,
+    projetsTab,
+    mesEtudesTab,
+    contactsTab,
   ];
-  return pagesMenueList[displaysInf.displayFirstMenuIndex] ?? <ErrorGest name="page" />;
+
+  const selectedArray = pagesArrays[displaysInf.displayFirstMenuIndex] ?? [];
+  return selectedArray[tab] ?? <ErrorGest name="page" />;
 }
 
-const HeaderPage = ({content}: {content?: any}): JSX.Element => {
-  if (content) {
-    return (content);
-  }
+// Header
+const HeaderPage = ({ content }: { content?: JSX.Element }): JSX.Element => {
+  if (content) return content;
+
+  // Placeholder simple, à remplacer par react-helmet si besoin
+  return <header />;
+}
+
+// Footer
+const FooterPage = ({ content }: { content?: JSX.Element }): JSX.Element => {
+  if (content) return content;
+
   return (
-    <>
-      {/* Il ne faut pas utiliser de **head** en react mais : react-helmet */}
-      <head>
-          <link rel="shortcut icon" href="../icone_portfolio.png" type="image/x-icon" />
-      </head>
-    </>
+    <footer className={FOOTER}>
+      <p>© 2025 Alan Gainie - Tous droits réservés</p>
+      <nav>
+        <a href="/mentions-legales">Mentions légales</a> | 
+        <a href="/confidentialite">Confidentialité</a>
+      </nav>
+    </footer>
   );
 }
 
-function sousMenue({tab_menue1, displaysInf}: {tab_menue1: any, displaysInf: any}): React.JSX.Element {
-  {/* Affiche les résultat des tab de la seconde barre de menu */}
+// Sous-menu
+function SousMenue({ tab_menue1, displaysInf }: { tab_menue1: number, displaysInf: DisplaysInf }): JSX.Element {
   return (
     <>
       <hr />
@@ -78,48 +88,46 @@ function sousMenue({tab_menue1, displaysInf}: {tab_menue1: any, displaysInf: any
   );
 }
 
-const BodyPage = ({content, tab_menue1, tab_menue2}: {content?: any, tab_menue1: any, tab_menue2?: any}): React.JSX.Element => {
-    if (content) {
-      return (content);
-    }
-  
-    return displaySimpleMenue();
+// Corps de page
+const BodyPage = ({ content, tab_menue1, tab_menue2, displaysInf }: 
+  { content?: JSX.Element, tab_menue1: number, tab_menue2?: number, displaysInf?: DisplaysInf }): JSX.Element => {
+
+  if (content) return content;
+
+  if (tab_menue2 !== undefined && displaysInf) {
+    return <SousMenue tab_menue1={tab_menue1} displaysInf={displaysInf} />;
+  }
+
+  // Fallback si pas de sous-menu
+  return displaySousMenue(tab_menue1, displaysInf ?? { displayFirstMenuIndex: 0, displaySecondMenuIndex: 0 });
 }
 
-const FooterPage = ({content}: {content?: any}): JSX.Element => {
-  if (content)
-    return content;
+// Composant Page principal
+function Page({
+  header,
+  footer,
+  content,
+  tab_menue1 = 0,
+  tab_menue2,
+  displaysInf = { displayFirstMenuIndex: 0, displaySecondMenuIndex: 0 },
+  type
+}: {
+  header?: JSX.Element | "none",
+  footer?: JSX.Element | "none",
+  content?: JSX.Element,
+  tab_menue1?: number,
+  tab_menue2?: number,
+  displaysInf?: DisplaysInf,
+  type?: string
+}): JSX.Element {
+
   return (
-    <footer className={FOOTER}>
-      <>
-          <p>© 2025 Alan Gainie - Tous droits réservés</p>
-          <nav>
-              <a href="/mentions-legales">Mentions légales </a>
-              <a href="/confidentialite"> Confidentialité</a>
-          </nav>
-      </>
-    </footer>
+    <div>
+      {(header !== "none") && <HeaderPage content={header} />}
+      <BodyPage content={content} tab_menue1={tab_menue1} tab_menue2={tab_menue2} displaysInf={displaysInf} />
+      {(footer !== "none") && <FooterPage content={footer} />}
+    </div>
   );
-}
-
-function Page({header, footer, content, type}: {header?: any, footer?: any, content: any, type?: string}) {
-
-  if (!type || ["normal", "classique", "ancre"].includes(type))
-    return (
-      <div>
-        {(header != "none") && <HeaderPage content={header}/>}
-        <BodyPage content={content} tab_menue1={tab_menue1}/>
-        {(footer != "none") && <FooterPage content={footer}/>}
-      </div >
-    );
-  else if (type === "db_menues" || type === "+menues")
-    return (
-      <div>
-        {(header != "none") && <HeaderPage content={header}/>}
-        <BodyPage content={content} tab_menue1={tab_menue1} tab_menue2={tab_menue2}/>
-        {(footer != "none") && <FooterPage content={footer}/>}
-      </div >
-    );
 }
 
 export default Page;

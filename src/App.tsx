@@ -4,13 +4,10 @@
 
 import './styles/index.css'
 import './styles/tw.ts';
-import { useState } from 'react';
 
 // -- Composants--------
-import Button from './template/composants/Button.tsx';
 
 // Pages
-import TerminalLinux from './template/organismes/TerminalLinux.tsx';
 import MonCV from './template/pages/MonCV.tsx';
 import MesEtudes from './template/pages/MesEtudes.tsx';
 import MesCompetences from './template/pages/MesCompetences.tsx';
@@ -38,11 +35,11 @@ import Project2 from './template/pages/Project2.tsx';
 
 // Utilitaire
 // import Carrousel from './template/composants/Carrousel.tsx';
-import { BUTTONTERMINAL, BUTTONTERMINALQUIT, DOWNPAGESCROLLDOWN, FOOTER, GLOBALMENUE, PAGESCROLLDOWN, PAGESGLOBAL, PARAMETERMENUE, ROOTMENUE, SECONDARYMENUE, TOPPAGESCROLLDOWN } from './styles/tw.ts';
+import { DOWNPAGESCROLLDOWN, GLOBALMENUE, PAGESCROLLDOWN, PAGESGLOBAL, TOPPAGESCROLLDOWN } from './styles/tw.ts';
 // import Theme from './template/organismes/Themes.tsx';
 import LanguageC from './template/pages/C.tsx';
-import Croll from './template/composants/Croll.tsx';
 import Page from './template/composants/Page.tsx';
+import { Menue } from './template/composants/Menue.tsx';
 //--------
 
 
@@ -113,47 +110,17 @@ export const content = (tab_menue2: any, tab_menue1: any) => (
 );
 
 function App() {
-  const [showTerminal, setShowTerminal] = useState(false);
+  // const [showTerminal, setShowTerminal] = useState(false);
 
   return (
     <>
       {/* Définir une taille de fenêtre de + de 2000px pour pouvoir scroll down ou up */}
       <div className={`${PAGESGLOBAL}`}>
         <div className={`${GLOBALMENUE}`}>
-          <Menue
-            content={null}
-            nbr={null}
-          />
-          <Menue
-            content={
-              <div className={PARAMETERMENUE}>
-                {/* Terminal */}
-                <div>
-                  <Button
-                    InternClassName={BUTTONTERMINAL}
-                    name="Ouvrir le terminal"
-                    onClick={() => setShowTerminal(true)}
-                    icon="terminal"/>
-                  {showTerminal && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-                      <div className="relative bg-black text-white rounded-2xl p-6 w-[680px] max-w-full shadow-2xl border border-yellow-400">
-                        <Button
-                          InternClassName={`${BUTTONTERMINALQUIT}`}
-                          onClick={() => setShowTerminal(false)}
-                          icon="cross"/>
-                        <TerminalLinux />
-                      </div>
-                    </div>
-                  )}
-                </div>
-                <Croll />
-              </div>
-            }
-            nbr={null}
-          />
+          <Menue nbr={1}/> // Menue Global
         </div>
         <Page
-          content={null}
+          content={content}
           type={undefined}
           />
       </div >
