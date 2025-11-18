@@ -1,57 +1,50 @@
 import BarreMenue from '../organismes/BarreMenue.tsx';
 import { ROOTMENUE, SECONDARYMENUE, PAGESCROLLDOWN, PAGESGLOBAL, TOPPAGESCROLLDOWN } from '../../styles/tw.ts';
 import { useState } from 'react';
-
-import MonCV from '../../template/pages/MonCV.tsx';
-import MesEtudes from '../../template/pages/MesEtudes.tsx';
-import MesCompetences from '../../template/pages/MesCompetences.tsx';
-import ErrorGest from '../../template/pages/errorGest.tsx';
-import HomePage from '../../template/pages/HomePage.tsx';
-import Projets from '../../template/pages/Projets.tsx';
-import Contacts from '../../template/pages/Contacts.tsx';
+import ErrorGest from '../pages/errorGest.tsx';
 
 import {MultipliedMenues, OnlyOnedMenue} from '../../../datas/Menue.tsx'
 
+// TODO: Finir les JS doxygene
+
+/**
+ * This var is a hook reaction when used a click in menue
+ */
 const handleClick = (tabIndex: number,
-    setTab1: React.Dispatch<React.SetStateAction<number>>,
-    setTabs1: React.Dispatch<React.SetStateAction<string[]>>,
-    setIcons1: React.Dispatch<React.SetStateAction<string[]>>) => {
+    setActuallistMenue: React.Dispatch<React.SetStateAction<number>>
+    ) => {
 
-    setTab1(0);
-    if (tabIndex === undefined || tabIndex < 0 || tabIndex > MultipliedMenues.length) {
-
-        setTabs1(["Home page", "Softskills"]);
-        setIcons1(["home", ""]);
-    } else {
-        setTabs1(MultipliedMenues[tabIndex].names);
-        setIcons1(MultipliedMenues[tabIndex].icones);
-    }
+    setActuallistMenue(tabIndex);
     return;
 };
 
-function displayContentDefaultMenue(tab: number, displaysInf: any) {
-    // La liste des menues
-    const pagesList = [
-        <HomePage />,
-        <MonCV />,
-        <MesCompetences />,
-        <Projets />,
-        <MesEtudes />,
-        <Contacts />,
-    ]
+/**
+ * The goal of this function is to return content when the menus set error
+ * when I have no menue : I have default menue. Is better than UX and error
+ * gest.
+ * @param tab
+ * @param displaysInf
+ * @returns React.JSX.Element : The content have to print in page.
+ */
+export function ContentDefaultMenue(tab: number, displaysInf: any): React.JSX.Element {
     displaysInf.displayFirstMenuIndex = tab
-    return pagesList[tab] ?? <ErrorGest name="page" />;
+    return OnlyOnedMenue.sections[tab] ?? <ErrorGest name="page" />;
+}
+
+interface ContentMenuesType {
+    type?: "ancre" | "multi-pages" | undefined;
+    actualmenue: number;
 }
 
 /**
+ * The goal of this function is to return content when one or more menues
+ * already existe.
  * @param type Is a choice enter differents methodes to read page:
  * - Page by ancre : type = ancre or undefined
- * - Page by page : type = multi-page
- * @returns 
+ * - Page by page : type = multi-pages
+ * @returns React.JSX.Element : The content have to print in page.
  */
-function displayContentMenues(type: string) {
-    const [tab_menue1] = useState(0);
-    // const [tab_menue2] = useState(0);
+export const ContentMenues: React.FC<ContentMenuesType> = ({type, actualmenue}: ContentMenuesType): React.JSX.Element => {
     const displaysInf: { displayFirstMenuIndex: number; displaySecondMenuIndex: number }[] = [
         { displayFirstMenuIndex: 0, displaySecondMenuIndex: 0 }
     ];
@@ -63,14 +56,14 @@ function displayContentMenues(type: string) {
                 <div className={PAGESGLOBAL}>
                     {/* Affiche le résultat des tab de la première barre de menu */}
                     <div className={TOPPAGESCROLLDOWN}>
-                        {displayContentDefaultMenue(tab_menue1, displaysInf)}
+                        {ContentDefaultMenue(actualmenue, displaysInf)}
                     </div>
                     {/* {tab_menue2 && sousMenue({ tab_menue2, displaysInf })} */}
                 </div>
             </div>
         </>
     );
-}
+};
 
 /**
  * @type React.FC (Fonction React)
@@ -78,27 +71,25 @@ function displayContentMenues(type: string) {
  * @param nbr is a number of menue and behind-menue you want
  * @returns One or more menue
  */
-export const Menue = ({ content, nbr }: { content?: any, nbr?: number | undefined }): (React.ReactNode | string) => {
-    const [, setTab1] = useState(0);
-    const [tabs_menue1, setTabs1] = useState(['...']);
-    const [icons_menue1, setIcons1] = useState(['more']);
+export const Menue = ({ content, nbr, actual_list_menue, setActuallistMenue}:
+    { content?: any, nbr?: number | undefined, actual_list_menue: number, setActuallistMenue: React.Dispatch<React.SetStateAction<number>>}): (React.ReactNode | string) => {
 
-    if (content)
-        return content;
+    if (content) return content;
+
     return (
         <>
             {/* Premier menu à gauche */}
             <BarreMenue
                 className={ROOTMENUE}
-                setTab={(tabIndex) => handleClick(tabIndex, setTab1, setTabs1, setIcons1)}
-                tabs={['Home page', 'À propos de moi/CV', 'Mes Competences', 'Projets', 'Mes Etudes', 'Contact']}
-                icons={["home", "cv", "competence", "projet", "etudes", "contact"]} />
+                setTab={(tabIndex) => handleClick(tabIndex, setActuallistMenue)}
+                tabs={OnlyOnedMenue.names}
+                icons={OnlyOnedMenue.icones} />
             {/* Second menu */}
             {(Number(nbr) > 1) && <BarreMenue
                 className={SECONDARYMENUE}
-                setTab={setTab1}
-                tabs={tabs_menue1}
-                icons={icons_menue1} />}
+                setTab={(tabIndex) => handleClick(tabIndex, setActuallistMenue)}
+                tabs={OnlyOnedMenue.sections.map((_, i) => OnlyOnedMenue.names[i])}
+                icons={OnlyOnedMenue.sections.map((_, i) => OnlyOnedMenue.icones[i])} />}
         </>
     );
 };
